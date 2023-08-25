@@ -1,20 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class NodeBehavior : MonoBehaviour
 {
-    public NodeState State;
+    [HideInInspector] public NodeState State;
+
+    [Space]
     public int LevelNumber;
+    [Space]
 
     [SerializeField] Sprite openSprite;
     [SerializeField] Sprite lockedSprite;
     [SerializeField] Sprite completeSprite;
+    [SerializeField] TextMeshPro levelNumberText;
 
     SpriteRenderer sr;
     void Awake()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
+    }
+    private void Start()
+    {
+        levelNumberText.text = LevelNumber.ToString();
     }
     public bool CompleteLevel()
     {
