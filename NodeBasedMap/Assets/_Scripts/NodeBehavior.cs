@@ -8,7 +8,7 @@ public class NodeBehavior : MonoBehaviour
     //this class determines the behavior of the level nodes in the game.
 
     [HideInInspector] public NodeState State; //the current state of the node, can be either locked, open or complete.
-    public NodeBehavior FatherNode; //a refrence to the previous level node that opens the current node.
+    public NodeBehavior ParentNode; //a refrence to the previous level node that opens the current node.
 
     #region ImportantVariables
     [Space]
@@ -36,7 +36,7 @@ public class NodeBehavior : MonoBehaviour
     #endregion
     private void Awake()
     {
-        //defining the starting node (that has no father node)
+        //defining the starting node (that has no Parent node)
         if (LevelNumber == 1 && !BonusLevel)
             StartingNode = true;
     }

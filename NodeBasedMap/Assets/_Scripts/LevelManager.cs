@@ -17,9 +17,9 @@ public class LevelManager : MonoBehaviour
     {
         foreach (var node in LevelNodes)
         {
-            if (node.FatherNode == null && !node.StartingNode)
+            if (node.ParentNode == null && !node.StartingNode)
             {
-                //displays an error message incase one of the level nodes has no father node assigned.
+                //displays an error message incase one of the level nodes has no Parent node assigned.
                 if (node.BonusLevel)
                     Debug.Log($"Error: bonus level node {node.LevelNumber} has no father node.");
                 else
@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour
             }
             if (node.StartingNode)
             {
-                //initializes the starting level node because it has no father node.
+                //initializes the starting level node because it has no Parent node.
                 if (firstTimeUpdatingNodes)
                 {
                     node.State = NodeState.Open;
@@ -42,9 +42,9 @@ public class LevelManager : MonoBehaviour
                 }
 
             }
-            switch (node.FatherNode.State)
+            switch (node.ParentNode.State)
             {
-                //checks the current node's father state and changes the current node state accordingly.
+                //checks the current node's Parent state and changes the current node state accordingly.
                 case NodeState.Locked:
                     node.State = NodeState.Locked;
                     break;
